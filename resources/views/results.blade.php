@@ -15,7 +15,7 @@
                             <th class=" text-right p-3">Score</th>
                         </thead>
                         <tbody>
-                            @foreach ($users->sortBy('estimation.score.sum') as $user)
+                            @foreach ($users as $user)
                                 <tr>
                                     <td class=" text-left p-3">{{ $user->name }}</td>
                                     <td class=" text-right p-3">{{ $user->estimations->sum('score') }}</td>
