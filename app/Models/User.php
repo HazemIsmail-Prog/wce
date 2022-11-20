@@ -42,8 +42,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['score'];
+
+
     public function estimations()
     {
         return $this->hasMany(Estimation::class);
     }
+
+    public function getScoreAttribute()
+    {
+        return $this->estimations->sum('score');
+    }
+
 }

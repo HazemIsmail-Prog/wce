@@ -11,9 +11,7 @@ class Estimation extends Model
 
     protected $guarded = [];
 
-    protected $appends = [
-        'score'
-    ];
+    protected $appends = ['score'];
 
     public function user()
     {
