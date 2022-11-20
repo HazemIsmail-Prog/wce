@@ -15,14 +15,15 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                </div>
-                @if (auth()->id() == 1)
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('results')" :active="request()->routeIs('results')">
+                        {{ __('Results') }}
+                    </x-nav-link>
+                    @if (auth()->id() == 1)
                         <x-nav-link :href="route('games')" :active="request()->routeIs('games')">
                             {{ __('Games') }}
                         </x-nav-link>
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -85,16 +86,18 @@
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Home') }}
             </x-responsive-nav-link>
-        </div>
-
-
-        @if (auth()->id() == 1)
-            <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('results')" :active="request()->routeIs('results')">
+                {{ __('Results') }}
+            </x-responsive-nav-link>
+            @if (auth()->id() == 1)
                 <x-responsive-nav-link :href="route('games')" :active="request()->routeIs('games')">
                     {{ __('Games') }}
                 </x-responsive-nav-link>
-            </div>
-        @endif
+            @endif
+        </div>
+
+
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

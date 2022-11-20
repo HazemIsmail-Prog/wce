@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estimation;
 use App\Models\Game;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EstimationController extends Controller
@@ -32,5 +33,11 @@ class EstimationController extends Controller
             );
 
         return redirect()->back();
+    }
+
+    public function results()
+    {
+        $users = User::all();
+        return view('results',compact('users'));
     }
 }
