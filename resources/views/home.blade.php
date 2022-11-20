@@ -60,20 +60,20 @@
                                                 <tbody>
                                                     @foreach ($game->estimations as $row)
                                                         <tr class=" border-b">
-                                                            <td class=" py-2">{{ @$row->user->name }}</td>
+                                                            <td class=" py-2 text-xs">{{ @$row->user->name }}</td>
                                                             <td class=" flex justify-between py-2 items-center">
                                                                     <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
                                                                         alt="{{ $game->team1->flag }}"
-                                                                        style="width: 20px; height:20px">
+                                                                        style="width: 15px; height:15px">
 
-                                                                <span>
+                                                                <span class=" text-xs">
                                                                     {{ @$row->team1_score }}
                                                                     :
                                                                     {{ @$row->team2_score }}
                                                                 </span>
                                                                     <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
                                                                         alt="{{ $game->team2->flag }}"
-                                                                        style="width: 20px; height:20px">
+                                                                        style="width: 15px; height:15px">
 
                                                             </td>
                                                         </tr>
