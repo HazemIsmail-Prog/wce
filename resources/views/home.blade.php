@@ -10,11 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @foreach ($games as $game)
-                        <form action="{{ route('save_estimation',$game) }}" method="POST">
+                        <form action="{{ route('save_estimation', $game) }}" method="POST">
                             @csrf
-                            @method("POST")
+                            @method('POST')
                             <div class="flex justify-center mb-5">
-                                <div class="block rounded-lg shadow-lg bg-white max-w-sm overflow-hidden ">
+                                <div class="block rounded-lg shadow-lg bg-white max-w-sm w-full overflow-hidden ">
                                     <div
                                         class=" flex justify-between items-center bg-teal-500 p-4 text-white leading-tight font-medium">
                                         <h5>{{ $game->date_time->format('d-m-Y') }}</h5>
@@ -26,31 +26,60 @@
                                                 <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
                                                     alt="{{ $game->team1->flag }}" style="width: 30px;">
                                                 <div class=" mt-2"><strong>{{ $game->team1->name }}</strong></div>
-                                                <x-text-input 
-                                                    value="{{ @$game->estimations()->where('user_id',auth()->id())->first()->team1_score }}" 
-                                                    id="team1_score" 
-                                                    min="0" 
-                                                    name="team1_score" 
-                                                    type="number"
-                                                    class="mt-2 block w-full text-center" />
+                                                @if ($game->date_time > now())
+                                                    <x-text-input
+                                                        value="{{ @$game->estimations()->where('user_id', auth()->id())->first()->team1_score }}"
+                                                        id="team1_score" min="0" name="team1_score"
+                                                        type="number" class="mt-2 block w-full text-center" />
+                                                @endif
+
                                             </div>
                                             <div class=" flex-1 flex justify-center flex-col items-center border-l-2">
                                                 <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
                                                     alt="{{ $game->team2->flag }}" style="width: 30px;">
                                                 <div class=" mt-2"><strong>{{ $game->team2->name }}</strong></div>
-                                                <x-text-input 
-                                                    value="{{ @$game->estimations()->where('user_id',auth()->id())->first()->team2_score }}" 
-                                                    id="team2_score" 
-                                                    min="0" 
-                                                    name="team2_score" 
-                                                    type="number"
-                                                    class="mt-2 block w-full text-center" />
+                                                @if ($game->date_time > now())
+                                                    <x-text-input
+                                                        value="{{ @$game->estimations()->where('user_id', auth()->id())->first()->team2_score }}"
+                                                        id="team2_score" min="0" name="team2_score"
+                                                        type="number" class="mt-2 block w-full text-center" />
+                                                @endif
                                             </div>
                                         </div>
                                         @if ($game->date_time > now())
-                                        <div class=" text-center my-2">
-                                            <x-primary-button>{{ __('Save') }}</x-primary-button>
-                                        </div>
+                                            <div class=" text-center my-2">
+                                                <x-primary-button>{{ __('Save') }}</x-primary-button>
+                                            </div>
+                                        @else
+                                        <hr class=" mt-6">
+                                            <table class=" min-w-full">
+                                                <thead class="border-b">
+                                                    <th class=" text-left">User</th>
+                                                    <th class=" text-right">Prediction</th>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($game->estimations as $row)
+                                                        <tr class=" border-b">
+                                                            <td class=" py-2">{{ @$row->user->name }}</td>
+                                                            <td class=" flex justify-between py-2 items-center">
+                                                                    <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
+                                                                        alt="{{ $game->team1->flag }}"
+                                                                        style="width: 20px; height:20px">
+
+                                                                <span>
+                                                                    {{ @$row->team1_score }}
+                                                                    :
+                                                                    {{ @$row->team2_score }}
+                                                                </span>
+                                                                    <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
+                                                                        alt="{{ $game->team2->flag }}"
+                                                                        style="width: 20px; height:20px">
+
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                         @endif
                                     </div>
                                 </div>

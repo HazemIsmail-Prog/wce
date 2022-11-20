@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
         Team::insert($teams);
 
         $games = [
-            ['team1_id' => 22,     'team2_id' => 10,       'date_time' => '2022-11-20 19:00:00'],
+            ['team1_id' => 22,     'team2_id' => 10,       'date_time' => '2022-11-20 16:00:00'],
             ['team1_id' => 11,     'team2_id' => 15,       'date_time' => '2022-11-21 16:00:00'],
             ['team1_id' => 24,     'team2_id' => 19,       'date_time' => '2022-11-21 19:00:00'],
             ['team1_id' => 31,     'team2_id' => 32,       'date_time' => '2022-11-21 22:00:00'],
