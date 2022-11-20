@@ -3,6 +3,7 @@
 use App\Http\Controllers\EstimationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/migrate-fresh-seed',function(){
+    Artisan::call('migrate:fresh --seed');
+});
+Route::get('/migrate',function(){
+    Artisan::call('migrate');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
