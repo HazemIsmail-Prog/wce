@@ -30,7 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/games', [GameController::class, 'index'])->name('games');
     Route::post('/save_game_score/{game}', [GameController::class, 'save'])->name('save_game_score');
     Route::post('/save_estimation/{game}', [EstimationController::class, 'store'])->name('save_estimation');
-    Route::get('/results', [EstimationController::class, 'results'])->name('results');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

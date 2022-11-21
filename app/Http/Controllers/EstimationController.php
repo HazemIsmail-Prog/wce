@@ -34,10 +34,4 @@ class EstimationController extends Controller
 
         return redirect()->back();
     }
-
-    public function results()
-    {
-        $users = User::with(['estimations.game'])->get();
-        return view('results',compact('users'));
-    }
 }
