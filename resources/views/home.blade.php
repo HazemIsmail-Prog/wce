@@ -50,34 +50,34 @@
                                         </form>
                                     @else
                                         <table class=" min-w-full">
-                                            <tr class=" border-b">
-                                                <td class=" py-2 text-sm"><strong>Final Result</strong></td>
-                                                <td class=" flex justify-between py-2 items-center">
-                                                    <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
-                                                        alt="{{ $game->team1->flag }}"
-                                                        style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
-
-                                                    <strong class=" text-sm">
-                                                        {{ @$game->team1_score }}
-                                                        :
-                                                        {{ @$game->team2_score }}
-                                                    </strong>
-                                                    <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
-                                                        alt="{{ $game->team2->flag }}"
-                                                        style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
-
-                                                </td>
-                                            </tr>
+                                            @if ($game->is_played)
+                                                <tr class=" border-b">
+                                                    <td class=" p-2 text-sm"><strong>Final Result</strong></td>
+                                                    <td class=" flex justify-between p-2 items-center">
+                                                        <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
+                                                            alt="{{ $game->team1->flag }}"
+                                                            style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
+                                                        <strong class=" text-sm">
+                                                            {{ @$game->team1_score }}
+                                                            :
+                                                            {{ @$game->team2_score }}
+                                                        </strong>
+                                                        <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
+                                                            alt="{{ $game->team2->flag }}"
+                                                            style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
+                                                    </td>
+                                                </tr>
+                                            @endif
                                             @foreach ($game->estimations as $row)
-                                                <tr>
-                                                    <td class=" py-2 text-xs">
+                                                <tr class="{{ $row->user_id == auth()->id() ? 'bg-gray-100 font-bold' : '' }}">
+                                                    <td class=" p-2 text-xs">
                                                         {{ @$row->user->name }}
                                                         @if ($row->score > 0)
                                                             <span
                                                                 class="inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded-full" style="font-size: 10px">{{ $row->score }}</span>
                                                         @endif
                                                     </td>
-                                                    <td class=" flex justify-between py-2 items-center">
+                                                    <td class=" flex justify-between p-2 items-center">
                                                         <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
                                                             alt="{{ $game->team1->flag }}"
                                                             style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
