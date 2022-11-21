@@ -25,7 +25,7 @@
                                             <div class=" flex ">
                                                 <div class=" flex-1 flex justify-center flex-col items-center">
                                                     <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
-                                                        alt="{{ $game->team1->flag }}" style="width: 30px;">
+                                                        alt="{{ $game->team1->flag }}" style="width: 30px;" class=" border border-teal-500 rounded-full">
                                                     <div class=" mt-2"><strong>{{ $game->team1->name }}</strong></div>
                                                     <x-text-input
                                                         value="{{ @$game->estimations()->where('user_id', auth()->id())->first()->team1_score }}"
@@ -36,7 +36,7 @@
                                                 <div
                                                     class=" flex-1 flex justify-center flex-col items-center border-l-2">
                                                     <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
-                                                        alt="{{ $game->team2->flag }}" style="width: 30px;">
+                                                        alt="{{ $game->team2->flag }}" style="width: 30px;" class=" border border-teal-500 rounded-full">
                                                     <div class=" mt-2"><strong>{{ $game->team2->name }}</strong></div>
                                                     <x-text-input
                                                         value="{{ @$game->estimations()->where('user_id', auth()->id())->first()->team2_score }}"
@@ -55,7 +55,7 @@
                                                 <td class=" flex justify-between py-2 items-center">
                                                     <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
                                                         alt="{{ $game->team1->flag }}"
-                                                        style="width: 15px; height:15px">
+                                                        style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
 
                                                     <strong class=" text-sm">
                                                         {{ @$game->team1_score }}
@@ -64,7 +64,7 @@
                                                     </strong>
                                                     <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
                                                         alt="{{ $game->team2->flag }}"
-                                                        style="width: 15px; height:15px">
+                                                        style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
 
                                                 </td>
                                             </tr>
@@ -80,7 +80,7 @@
                                                     <td class=" flex justify-between py-2 items-center">
                                                         <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
                                                             alt="{{ $game->team1->flag }}"
-                                                            style="width: 15px; height:15px">
+                                                            style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
 
                                                         <span class=" text-xs">
                                                             {{ @$row->team1_score }}
@@ -89,7 +89,7 @@
                                                         </span>
                                                         <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
                                                             alt="{{ $game->team2->flag }}"
-                                                            style="width: 15px; height:15px">
+                                                            style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
 
                                                     </td>
                                                 </tr>
