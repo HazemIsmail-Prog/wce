@@ -37,7 +37,7 @@ class EstimationController extends Controller
 
     public function results()
     {
-        $users = User::all();
+        $users = User::with(['estimations.game'])->get();
         return view('results',compact('users'));
     }
 }
