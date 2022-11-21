@@ -30,7 +30,7 @@
                                                     <x-text-input
                                                         value="{{ @$game->estimations()->where('user_id', auth()->id())->first()->team1_score }}"
                                                         id="team1_score" min="0" name="team1_score"
-                                                        type="number" class="mt-2 block w-full text-center" />
+                                                        type="number" class="mt-2 text-center w-20 bg-gray-200 border-0 p-1 mx-2" />
 
                                                 </div>
                                                 <div
@@ -41,7 +41,7 @@
                                                     <x-text-input
                                                         value="{{ @$game->estimations()->where('user_id', auth()->id())->first()->team2_score }}"
                                                         id="team2_score" min="0" name="team2_score"
-                                                        type="number" class="mt-2 block w-full text-center" />
+                                                        type="number" class="mt-2 text-center w-20 bg-gray-200 border-0 p-1 mx-2" />
                                                 </div>
                                             </div>
                                             <div class=" text-right mt-2">
