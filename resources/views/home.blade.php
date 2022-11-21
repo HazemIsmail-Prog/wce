@@ -13,7 +13,7 @@
                         <div class="flex justify-center mb-5">
                             <div class="block rounded-lg shadow-lg bg-white max-w-sm w-full overflow-hidden ">
                                 <div
-                                    class=" flex justify-between items-center bg-teal-500 p-4 text-white leading-tight font-medium">
+                                    class=" flex justify-between items-center bg-teal-600 p-4 text-white leading-tight font-medium">
                                     <h5>{{ $game->date_time->format('d-m-Y') }}</h5>
                                     <h5 class="text-sm">{{ $game->date_time->format('h:i a') }}</h5>
                                 </div>
@@ -44,8 +44,8 @@
                                                         type="number" class="mt-2 block w-full text-center" />
                                                 </div>
                                             </div>
-                                            <div class=" text-center my-2">
-                                                <x-primary-button>{{ __('Save') }}</x-primary-button>
+                                            <div class=" text-right mt-2">
+                                                <x-primary-button class=" bg-teal-900 py-1 px-2">{{ __('Save') }}</x-primary-button>
                                             </div>
                                         </form>
                                     @else
