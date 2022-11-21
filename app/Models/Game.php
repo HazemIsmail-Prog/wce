@@ -15,6 +15,9 @@ class Game extends Model
         'date_time' => 'dateTime'
     ];
 
+    protected $appends = ['is_played'];
+
+
     public function team1()
     {
         return $this->belongsTo(Team::class,'team1_id');
@@ -26,5 +29,14 @@ class Game extends Model
     public function estimations()
     {
         return $this->hasMany(Estimation::class);
+    }
+
+    public function getIsPlayedAttribute()
+    {
+        if($this->team1_score !== null && $this->team2_score !== null)
+        {
+            return 1;
+        }
+        return 0;
     }
 }

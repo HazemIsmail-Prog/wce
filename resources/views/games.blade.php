@@ -1,18 +1,16 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Home') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
-    <div class="py-12">
+    <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <table class=" min-w-full">
                         <thead>
-                            <th>ID</th>
-                            <th>Date/Time</th>
                             <th class=" text-left">Team1</th>
                             <th>Score1</th>
                             <th></th>
@@ -26,13 +24,11 @@
                                     @csrf
                                     @method('POST')
                                     <tr>
-                                        <td>{{ $game->id }}</td>
-                                        <td>{{ $game->date_time->format('d-m-Y h:i a') }}</td>
                                         <td>
                                             <div class=" flex justify-start items-center">
                                                 <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
                                                     alt="{{ $game->team1->flag }}" style="width: 30px;">
-                                                <div class=" ml-4">{{ $game->team1->name }}</div>
+                                                <div class=" ml-2">{{ $game->team1->name }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -48,7 +44,7 @@
                                         </td>
                                         <td>
                                             <div class="flex justify-end items-center">
-                                                <div class=" mr-4">{{ $game->team2->name }}</div>
+                                                <div class=" mr-2">{{ $game->team2->name }}</div>
                                                 <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
                                                     alt="{{ $game->team1->flag }}" style="width: 30px;">
                                             </div>
