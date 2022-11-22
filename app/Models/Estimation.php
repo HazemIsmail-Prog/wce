@@ -26,7 +26,7 @@ class Estimation extends Model
     public function getScoreAttribute()
     {
 
-        if($this->game->team1_score == null && $this->game->team2_score == null)
+        if($this->game->team1_score === null && $this->game->team2_score === null)
         {
             return 0;
         }
