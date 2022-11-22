@@ -10,7 +10,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-
                     {{-- Games --}}
                     @foreach ($games->sortBy('is_played') as $game)
                         <div class="flex justify-center mb-5">
@@ -79,8 +78,10 @@
                                                     </td>
                                                     <td>
                                                         @if ($row->score > 0)
+                                                        <div class=" flex">
                                                             <span
                                                                 class="inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded-full" style="font-size: 10px">{{ $row->score }}</span>
+                                                        </div>
                                                         @endif
                                                     </td>
                                                     <td class=" flex justify-between p-2 items-center">
@@ -96,7 +97,6 @@
                                                         <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
                                                             alt="{{ $game->team2->flag }}"
                                                             style="width: 15px; height:15px" class=" border border-teal-500 rounded-full">
-
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -106,17 +106,6 @@
                             </div>
                         </div>
                     @endforeach
-
-
-
-
-
-
-
-
-
-
-
 
                     {{-- Totals --}}
                     <div class="flex justify-center mb-5">
@@ -130,7 +119,7 @@
                                     @foreach ($users->sortByDesc('score') as $user)
                                         <tr class="{{ $user->id == auth()->id() ? 'bg-gray-100 font-bold' : '' }}">
                                             <td class=" px-3 py-1 text-xs">{{ $user->name }}</td>
-                                            <td class=" px-3 py-1  text-right">
+                                            <td class=" px-3 py-1  text-right flex justify-end items-center">
                                                 <span class="inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded-full" style="font-size: 10px">{{ $user->score }}</span>
                                             </td>
                                         </tr>
@@ -139,6 +128,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
