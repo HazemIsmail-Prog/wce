@@ -14,7 +14,7 @@
                         <div class="flex justify-center mb-5">
                             <div class="block rounded-lg shadow-lg bg-white max-w-sm w-full overflow-hidden ">
                                 <div
-                                    class=" flex justify-between items-center bg-teal-600 p-4 text-white leading-tight font-medium">
+                                    class=" flex justify-between items-center bg-gray-600 p-4 text-white leading-tight font-medium">
                                     <h5 class=" text-sm">{{ $game->date_time->format('D,  d-m-Y') }}</h5>
                                     <h5 class="text-xs">{{ $game->date_time->format('h:i a') }}</h5>
                                 </div>
