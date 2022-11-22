@@ -15,7 +15,11 @@ class Game extends Model
         'date_time' => 'dateTime'
     ];
 
-    protected $appends = ['is_played'];
+    protected $appends = [
+        'is_played',
+        'date',
+        'time',
+    ];
 
 
     public function team1()
@@ -38,5 +42,15 @@ class Game extends Model
             return 1;
         }
         return 0;
+    }
+
+    public function getDateAttribute()
+    {
+        return $this->date_time->format('D,  d-m-Y');
+    }
+
+    public function getTimeAttribute()
+    {
+        return $this->date_time->format('h:i a');
     }
 }
