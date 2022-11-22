@@ -26,25 +26,39 @@ class Estimation extends Model
     public function getScoreAttribute()
     {
 
-        if($this->game->team1_score === null && $this->game->team2_score === null)
-        {
+        // Game not Finished yet
+        if (!$this->game->is_played) {
             return 0;
         }
 
-
-        if($this->game->team1_score == $this->team1_score && $this->game->team2_score == $this->team2_score)
-        {
+        //Exact Estimation
+        if (
+            $this->game->team1_score == $this->team1_score
+            &&
+            $this->game->team2_score == $this->team2_score
+        ) {
             return 4;
         }
-        if($this->game->team1_score - $this->game->team2_score == $this->team1_score - $this->team2_score)
-        {
+
+        // Same Goals Difference or Draw
+        if (
+            $this->game->team1_score - $this->game->team2_score
+            ==
+            $this->team1_score - $this->team2_score
+        ) {
             return 2;
         }
 
-        if(($this->game->team1_score > $this->game->team2_score && $this->team1_score > $this->team2_score) || ($this->game->team1_score < $this->game->team2_score && $this->team1_score < $this->team2_score)){
+        // Team 1 Wins Or Team 2 Wins
+        if (
+            ($this->game->team1_score > $this->game->team2_score && $this->team1_score > $this->team2_score)
+            ||
+            ($this->game->team1_score < $this->game->team2_score && $this->team1_score < $this->team2_score)
+        ) {
             return 1;
         }
+
+        // return 0 if non of above options
         return 0;
     }
-
 }
