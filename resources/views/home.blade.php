@@ -12,7 +12,7 @@
 
                     {{-- Games --}}
                     @foreach ($games->sortBy('is_played') as $game)
-                        <div class="flex justify-center mb-5">
+                        <div id="game{{ $game->id }}" class="flex justify-center mb-5">
                             <div class="block rounded-lg shadow-lg bg-white max-w-sm w-full overflow-hidden ">
                                 <div
                                     class="flex justify-between items-center bg-teal-600 p-4 text-white leading-tight font-medium">
@@ -136,3 +136,13 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    if(localStorage.getItem("scroll")){
+        window.scrollTo(0,localStorage.getItem("scroll"));
+        // window.scrollTo({top: localStorage.getItem("scroll")});
+    }
+    onscroll = (event) => {
+        localStorage.setItem("scroll", document.documentElement.scrollTop);
+    };
+</script>
