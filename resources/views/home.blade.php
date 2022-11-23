@@ -51,25 +51,29 @@
                                         </form>
                                     @else
                                         <table class="min-w-full">
-                                            @if ($game->is_played)
+                                            {{-- @if ($game->is_played) --}}
                                                 <tr class="border-b">
-                                                    <td class="p-2 text-sm"><strong>Final Result</strong></td>
-                                                    <td></td>
-                                                    <td class="flex justify-between p-2 items-center">
-                                                        <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
-                                                            alt="{{ $game->team1->flag }}"
-                                                            style="width: 15px; height:15px" class="border border-teal-500 rounded-full">
-                                                        <strong class="text-sm">
-                                                            {{ @$game->team1_score }}
-                                                            :
-                                                            {{ @$game->team2_score }}
-                                                        </strong>
-                                                        <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
-                                                            alt="{{ $game->team2->flag }}"
-                                                            style="width: 15px; height:15px" class="border border-teal-500 rounded-full">
-                                                    </td>
+                                                    <td colspan="3" class="p-2 text-xs font-bold">
+                                                        <div class=" flex justify-between">
+                                                            <div>{{ $game->team1->name }}</div>
+                                                            <div>
+                                                                <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
+                                                                    alt="{{ $game->team1->flag }}"
+                                                                    style="width: 15px; height:15px" class="border border-teal-500 rounded-full">
+                                                            </div>
+                                                            @if ($game->is_played)
+                                                                <div>{{ @$game->team1_score }} : {{ @$game->team2_score }}</div>
+                                                            @endif
+                                                            <div>   
+                                                                <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
+                                                                alt="{{ $game->team2->flag }}"
+                                                                style="width: 15px; height:15px" class="border border-teal-500 rounded-full">
+                                                            </div>
+                                                            <div>{{ $game->team2->name }}</div>
+                                                        </div>
+                                                        </td>
                                                 </tr>
-                                            @endif
+                                            {{-- @endif --}}
                                             @foreach ($game->estimations as $row)
                                                 <tr class="{{ $row->user_id == auth()->id() ? 'bg-gray-100 font-bold' : '' }}">
                                                     <td class="p-2 text-xs">
