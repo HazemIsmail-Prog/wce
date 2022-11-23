@@ -81,7 +81,7 @@
                                                         @if ($row->score > 0)
                                                         <div class="flex">
                                                             <span
-                                                                class="inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded-full" style="font-size: 10px">{{ $row->score }}</span>
+                                                                class="inline-block py-0.5 px-2 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded-full" style="font-size: 9px">{{ $row->score }}</span>
                                                         </div>
                                                         @endif
                                                     </td>
