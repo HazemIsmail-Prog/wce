@@ -54,7 +54,7 @@
                                             {{-- @if ($game->is_played) --}}
                                                 <tr class="border-b">
                                                     <td colspan="3" class="p-2 text-xs font-bold">
-                                                        <div class=" flex justify-between">
+                                                        <div class="flex justify-evenly">
                                                             <div>{{ $game->team1->name }}</div>
                                                             <div>
                                                                 <img src="{{ asset('images/flags/' . $game->team1->flag) }}"
