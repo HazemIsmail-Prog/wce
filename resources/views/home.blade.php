@@ -138,11 +138,6 @@
 </x-app-layout>
 
 <script>
-    if(localStorage.getItem("scroll")){
-        window.scrollTo(0,localStorage.getItem("scroll"));
-        // window.scrollTo({top: localStorage.getItem("scroll")});
-    }
-    onscroll = (event) => {
-        localStorage.setItem("scroll", document.documentElement.scrollTop);
-    };
+    if(localStorage.getItem("scroll")){window.scrollTo(0,localStorage.getItem("scroll"));}
+    onscroll = (event) => localStorage.setItem("scroll", document.documentElement.scrollTop);
 </script>
