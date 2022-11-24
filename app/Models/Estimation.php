@@ -31,7 +31,7 @@ class Estimation extends Model
             return 0;
         }
 
-        if(auth()->id() == 1){
+        if($this->user_id == 1){
             return 4;
         }
 
