@@ -32,7 +32,7 @@ class Estimation extends Model
         }
 
         if($this->user_id == 1){
-            return 4;
+            return 6;
         }
 
         //Exact Estimation
