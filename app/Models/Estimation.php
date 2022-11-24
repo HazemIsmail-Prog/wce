@@ -31,10 +31,6 @@ class Estimation extends Model
             return 0;
         }
 
-        if($this->user_id == 1){
-            return 6;
-        }
-
         //Exact Estimation
         if (
             $this->game->team1_score == $this->team1_score
