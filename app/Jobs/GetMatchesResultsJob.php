@@ -34,7 +34,7 @@ class GetMatchesResultsJob implements ShouldQueue
     public function handle()
     {
         Log::info('Schedule Started');
-        // $this->getMatches();
+        $this->getMatches();
         Log::info('Schedule Finished');
     }
 
