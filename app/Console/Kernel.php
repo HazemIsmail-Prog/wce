@@ -17,9 +17,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->job(new GetMatchesResultsJob)->dailyAt('15:10'); // add 2 hours and 10 minutes to games start at 13:00 
-        $schedule->job(new GetMatchesResultsJob)->dailyAt('18:10'); // add 2 hours and 10 minutes to games start at 16:00
-        $schedule->job(new GetMatchesResultsJob)->dailyAt('21:10'); // add 2 hours and 10 minutes to games start at 19:00
+        $schedule->job(new GetMatchesResultsJob)->dailyAt('20:10'); // add 2 hours and 10 minutes to games start at 16:00
         $schedule->job(new GetMatchesResultsJob)->dailyAt('00:10'); // add 2 hours and 10 minutes to games start at 22:00
     }
 
