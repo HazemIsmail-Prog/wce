@@ -25,6 +25,10 @@ class EstimationController extends Controller
             return redirect()->back();
         }
 
+        if($game->date_time->format('Y-m-d') > '2022-12-02' && !$request->winner_id){
+            return redirect()->back();
+        }
+
         Estimation::updateOrCreate(
             [
                 'user_id' => auth()->id(),
@@ -33,6 +37,7 @@ class EstimationController extends Controller
             [
                 'team1_score' => $request->team1_score,
                 'team2_score' => $request->team2_score,
+                'winner_id' => $request->winner_id,
             ]
         );
 
