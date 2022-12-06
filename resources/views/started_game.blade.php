@@ -9,7 +9,12 @@
                         style="width: 15px; height:15px" class="border border-teal-500 rounded-full">
                 </div>
                 @if ($game->is_played)
+                <div class=" flex flex-col">
                     <div>{{ @$game->team1_score }} : {{ @$game->team2_score }}</div>
+                    @if ($game->team1_p_score && $game->team2_p_score)
+                        <div>{{ $game->team1_p_score }} : {{ $game->team2_p_score }}</div>
+                    @endif
+                </div>
                 @endif
                 <div>   
                     <img src="{{ asset('images/flags/' . $game->team2->flag) }}"
@@ -23,7 +28,18 @@
     @foreach ($game->estimations as $row)
         <tr class="{{ $row->user_id == auth()->id() ? 'bg-gray-100 font-bold' : '' }}">
             <td class="p-1 text-xs">
-                {{ @$row->user->name }}
+                <div class=" flex items-center ">
+                    <div>
+                        {{ @$row->user->name }}
+                    </div>
+                    @if ($row->winner_id)
+                    <div class="ml-2">
+                        <img src="{{ asset('images/flags/' . $row->winner->flag) }}"
+                            alt="{{ $row->winner->flag }}"
+                            style="width: 10px; height:10px" class="border border-teal-500 rounded-full">
+                    </div>
+                    @endif
+                </div>
             </td>
             <td width="50%">
                 @if ($row->score > 0)

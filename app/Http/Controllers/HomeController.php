@@ -12,7 +12,7 @@ class HomeController extends Controller
         $users = User::with(['estimations.game'])->get();
         $games = Game::query()
             // ->where('date_time','>',now()->addMinutes(15))
-            ->with(['team1','team2','estimations.user','estimations.game'])
+            ->with(['team1','team2','estimations.user','estimations.game', 'estimations.winner'])
             ->get();
         return view('home',compact('games','users'));
     }

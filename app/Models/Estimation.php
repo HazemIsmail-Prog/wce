@@ -23,42 +23,57 @@ class Estimation extends Model
         return $this->belongsTo(Game::class);
     }
 
+    public function winner()
+    {
+        return $this->belongsTo(Team::class, 'winner_id');
+    }
+
     public function getScoreAttribute()
     {
 
+        $score = 0;
+
         // Game not Finished yet
-        if (!$this->game->is_played) {
-            return 0;
+        if ($this->game->is_played) {
+            //Exact Estimation
+            if (
+                $this->game->team1_score == $this->team1_score
+                &&
+                $this->game->team2_score == $this->team2_score
+            ) {
+                $score = 4;
+            }else{
+                // Same Goals Difference or Draw
+                if (
+                    $this->game->team1_score - $this->game->team2_score
+                    ==
+                    $this->team1_score - $this->team2_score
+                ) {
+                    $score = 2;
+                }else{
+                    // Team 1 Wins Or Team 2 Wins
+                    if (
+                        ($this->game->team1_score > $this->game->team2_score && $this->team1_score > $this->team2_score)
+                        ||
+                        ($this->game->team1_score < $this->game->team2_score && $this->team1_score < $this->team2_score)
+                    ) {
+                        $score = 1;
+                    }
+                }
+            }
         }
 
-        //Exact Estimation
-        if (
-            $this->game->team1_score == $this->team1_score
-            &&
-            $this->game->team2_score == $this->team2_score
-        ) {
-            return 4;
-        }
 
-        // Same Goals Difference or Draw
-        if (
-            $this->game->team1_score - $this->game->team2_score
-            ==
-            $this->team1_score - $this->team2_score
-        ) {
-            return 2;
-        }
 
-        // Team 1 Wins Or Team 2 Wins
+        // Penalties Calculation
         if (
-            ($this->game->team1_score > $this->game->team2_score && $this->team1_score > $this->team2_score)
+            ($this->game->team1_p_score > $this->game->team2_p_score && $this->winner_id == $this->game->team1_id)
             ||
-            ($this->game->team1_score < $this->game->team2_score && $this->team1_score < $this->team2_score)
+            ($this->game->team1_p_score < $this->game->team2_p_score && $this->winner_id == $this->game->team2_id)
         ) {
-            return 1;
+            $score = $score + 1;
         }
 
-        // return 0 if non of above options
-        return 0;
+        return $score;
     }
 }

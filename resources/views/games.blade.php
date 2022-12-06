@@ -31,6 +31,10 @@
                                                     value="{{ $game->team1_score }}"
                                                     id="team1_score" min="0" name="team1_score"
                                                     type="number" class="mt-2 text-center w-20 bg-gray-200 border-0 p-1 mx-2 text-sm" />
+                                                <x-text-input
+                                                    value="{{ $game->team1_p_score }}"
+                                                    id="team1_p_score" min="0" name="team1_p_score"
+                                                    type="number" class="mt-2 text-center w-20 bg-gray-200 border-0 p-1 mx-2 text-sm" />
                                             </div>
                                             <div
                                                 class="flex-1 flex justify-center flex-col items-center border-l-2">
@@ -40,6 +44,10 @@
                                                 <x-text-input
                                                     value="{{ $game->team2_score }}"
                                                     id="team2_score" min="0" name="team2_score"
+                                                    type="number" class="mt-2 text-center w-20 bg-gray-200 border-0 p-1 mx-2 text-sm" />
+                                                <x-text-input
+                                                    value="{{ $game->team2_p_score }}"
+                                                    id="team2_p_score" min="0" name="team2_p_score"
                                                     type="number" class="mt-2 text-center w-20 bg-gray-200 border-0 p-1 mx-2 text-sm" />
                                             </div>
                                         </div>

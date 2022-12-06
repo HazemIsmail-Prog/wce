@@ -30,6 +30,7 @@ class Game extends Model
     {
         return $this->belongsTo(Team::class,'team2_id');
     }
+
     public function estimations()
     {
         return $this->hasMany(Estimation::class);
